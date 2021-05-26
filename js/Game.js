@@ -22,13 +22,12 @@
          currentPhrase.addPhraseToDisplay();
      }
      getRandomPhrase() {
-        // console.log(this.phrases);
         const index = Math.floor(Math.random() * this.phrases.length);
-        return this.phrases[index]
+        return this.phrases[index].toLowerCase();
      }
      handleInteraction(button) {
+       button.disabled = true;
        const key = button.textContent;
-       console.log(key);
         if (this.activePhrase.includes(key)) {
           button.classList.add('chosen');
           const currentPhrase = new Phrase(this.activePhrase);
@@ -48,7 +47,7 @@
        const heartImage = scoreboard[this.missed - 1].querySelector('img');
        heartImage.src = 'images/lostHeart.png';
        if (this.missed === 5) {
-        gameOver('lose');
+        this.gameOver('lose');
        }
        
      }
@@ -57,12 +56,15 @@
         // if all buttons have show then there is a win
         const keyList = document.querySelector('#phrase ul').children;
         let showLetterCount = 0;
+        let spaceCount = 0;
         for (let i = 0; i < keyList.length; i++) {
           if (keyList[i].classList.contains('show')) {
                showLetterCount +=1;
+            } else if (keyList[i].classList.contains('space')) {
+                spaceCount += 1;
             }
         }
-        return showLetterCount === keyList.length
+        return (showLetterCount + spaceCount) === keyList.length
      }
 
      gameOver(gameStatus) {
@@ -76,21 +78,3 @@
      }
        
  }
-
-// let game = new Game(0, ['hi', 'heck yea', 'no way'], 'he' )
-// game.startGame();
- 
- //game.startGame()
- //game.getRandomPhrase();
- //game.handleInteraction();
- //game.gameOver('lose');
-/*
- const keys = document.getElementsByClassName('key');
- for (let i =0; i <keys.length; i++) {
-     if (i === 2) {
-        game.handleInteraction(keys[i]);
-     }
-     
-     // if matched then handle the interaction
- }
- */

@@ -43,10 +43,4 @@
      } 
  }
 
-
- //const phrase = new Phrase('heck yeah');
-
- //phrase.addPhraseToDisplay();
- //phrase.checkLetter('a');
-
  
