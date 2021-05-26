@@ -30,6 +30,7 @@
        const splitWords = this.phrase.split('');
        if (splitWords.includes(pickedLetter)) {
         this.showMatchedLetter(pickedLetter);
+        return true 
        }
      }
 
