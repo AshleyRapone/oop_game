@@ -74,7 +74,23 @@
       gameOverMessage.textContent = 'Game Over';
       const overlay = document.getElementById('overlay');
       overlay.classList.replace('start', gameStatus);
+      this.resetGame();
       
+     }
+
+     resetGame() {
+      const keyList = document.querySelector('#phrase ul')
+      keyList.innerHTML = '';
+      const keys = document.getElementsByClassName('key');
+      for (let i = 0; i < keys.length; i++) {
+        keys[i].className = 'key';
+        keys[i].disabled = false
+      }
+      const scoreboard = document.querySelector('#scoreboard ol').children;
+      for (let i = 0; i < scoreboard.length; i++) {
+        const heartImage = scoreboard[i].querySelector('img');
+        heartImage.src = 'images/liveHeart.png';
+      }
      }
        
  }
