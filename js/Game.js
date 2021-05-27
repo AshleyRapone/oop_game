@@ -73,7 +73,8 @@
       const gameOverMessage = document.getElementById('game-over-message');
       gameOverMessage.textContent = 'Game Over';
       const overlay = document.getElementById('overlay');
-      overlay.classList.replace('start', gameStatus);
+      const currentOverlayClass = overlay.className
+      overlay.classList.replace(currentOverlayClass, gameStatus);
       this.resetGame();
       
      }
