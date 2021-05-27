@@ -86,6 +86,8 @@
         keys[i].className = 'key';
         keys[i].disabled = false
       }
+      const buttonReset = document.getElementById('btn__reset');
+      buttonReset.textContent = 'Play Again';
       const scoreboard = document.querySelector('#scoreboard ol').children;
       for (let i = 0; i < scoreboard.length; i++) {
         const heartImage = scoreboard[i].querySelector('img');
