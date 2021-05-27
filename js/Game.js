@@ -68,10 +68,15 @@
      }
 
      gameOver(gameStatus) {
+      document.removeEventListener('keyup', eventHandler);
       const gameOverlay = document.getElementById('overlay');
       gameOverlay.style.display = 'block';
       const gameOverMessage = document.getElementById('game-over-message');
-      gameOverMessage.textContent = 'Game Over';
+      if (gameStatus == 'lose') {
+        gameOverMessage.textContent = 'Game Over';
+      } else if (gameStatus === 'win') {
+        gameOverMessage.textContent = 'You Won';
+      }
       const overlay = document.getElementById('overlay');
       const currentOverlayClass = overlay.className
       overlay.classList.replace(currentOverlayClass, gameStatus);
