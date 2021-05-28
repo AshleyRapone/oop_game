@@ -4,7 +4,11 @@
 
 // Defining variables that will be passed to the Game object
 const missed = 0;
-const phrases = ['Winter is coming', "You know nothing Jon Snow", "A Lannister always pays his debts", "Dracarys", "Hold the door"];
+const phrases = [new Phrase('Winter is coming'), 
+                 new Phrase("You know nothing Jon Snow"), 
+                 new Phrase("A Lannister always pays his debts"), 
+                 new Phrase("Dracarys"), 
+                 new Phrase("Hold the door")];
 const activePhrase = null;
 
 // This function is used to handle events relating to keyboard keys being pressed
@@ -15,8 +19,12 @@ let eventHandler = function(event) {
     for (let i = 0; i < keys.length; i++) {
         // If the key on the keyboard matches the key that is pressed
         if (keys[i].innerHTML === keyPressed) {
-            // Invoke the game interaction for the key that was pressed
-            game.handleInteraction(keys[i]);
+            if (keys[i].disabled) { 
+              continue
+            } else {
+                // Invoke the game interaction for the key that was pressed
+                game.handleInteraction(keys[i]);
+                console.log(keys[i]) }
         }
         }
     } 

@@ -10,30 +10,32 @@
        this.phrases = phrases;
        this.activePhrase = activePhrase;
      }
-    
+
      startGame() {
          // Hides the start screen overlay 
          const gameOverlay = document.getElementById('overlay');
          gameOverlay.style.display = 'none';
          // sets the activePhrase property 
-         this.activePhrase = this.getRandomPhrase()
+         this.activePhrase = this.getRandomPhrase();
          //add Phrase To the Display()
-         const currentPhrase = new Phrase(this.activePhrase);
-         currentPhrase.addPhraseToDisplay();
+         console.log(this.activePhrase);
+         this.activePhrase.addPhraseToDisplay();
+        // currentPhrase.addPhraseToDisplay();
      }
      getRandomPhrase() {
         const index = Math.floor(Math.random() * this.phrases.length);
-        return this.phrases[index].toLowerCase();
+        return this.phrases[index];
      }
      handleInteraction(button) {
        button.disabled = true;
+       console.log(button.disabled)
        const key = button.textContent;
-        if (this.activePhrase.includes(key)) {
+       console.log(this.activePhrase.checkLetter(key))
+        if (this.activePhrase.checkLetter(key)) {
           button.classList.add('chosen');
-          const currentPhrase = new Phrase(this.activePhrase);
-          currentPhrase.showMatchedLetter(key);
+          this.activePhrase.showMatchedLetter(key);
           const winner = this.checkForWin();
-          if (this.checkForWin()) {
+          if (winner) {
             this.gameOver('win');
           }
         } else {
