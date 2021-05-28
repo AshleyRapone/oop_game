@@ -19,12 +19,13 @@ let eventHandler = function(event) {
     for (let i = 0; i < keys.length; i++) {
         // If the key on the keyboard matches the key that is pressed
         if (keys[i].innerHTML === keyPressed) {
+            // If the key has the disabled property, skip
             if (keys[i].disabled) { 
               continue
             } else {
                 // Invoke the game interaction for the key that was pressed
                 game.handleInteraction(keys[i]);
-                console.log(keys[i]) }
+                }
         }
         }
     } 
